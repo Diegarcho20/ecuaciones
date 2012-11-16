@@ -1,47 +1,31 @@
 package ar.edu.unlam.tallerweb.ecuaciones;
 
+import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Representa una ecuación polinómica del tipo
- * f(x) = n + (n-1) × x + (n-2) × x^2 + ...
- *
- */
 public class EcuacionPolinomica implements Ecuacion {
 
-	/**
-	 * Constructor parametrizado
-	 *
-	 * @param coeficientes siendo coeficientes[0] el valor que
-	 * corresponde al término independiente.
-	 *
-	 * e.g.
-	 *
-	 * f(x) = coeficientes[0]
-	 * 		+ coeficientes[1] × x
-	 * 		+ coeficientes[2] × x^2
-	 * 		+ ...
-	 *
-	 * coeficientes = [1, 0, 2, 1, -1]
-	 * f(x) = 1 × x^0 + 0 × x^1 + 2 × x^2 + 1 × x^3 - 1 × x^4
-	 *
-	 */
-	public EcuacionPolinomica(List<Double> coeficientes) {
+	private List<Double> coeficientes = new LinkedList<Double>();
 
-		throw new RuntimeException("No implementado");
-
+	public EcuacionPolinomica(List<Double> lista) throws RuntimeException {
+		if (lista != null) {
+			this.coeficientes = lista;
+		} else {
+			throw new RuntimeException("No implementado");
+		}
 	}
 
-	/**
-	 * Devuelve el resultado de evaluar f(x)
-	 *
-	 * @param x la variable
-	 *
-	 */
 	public Double resolver(Double x) {
+		if (x != null) {
+			Double suma = 0.0;
+			for (int i = 0; i < this.coeficientes.size(); i++) {
+				suma = suma.doubleValue() + (coeficientes.get(i).doubleValue() * Math.pow(x.doubleValue(), i));
+			}
+			return suma.doubleValue();
 
-		throw new RuntimeException("No implementado");
-
+		} else {
+			throw new RuntimeException("No implementado");
+		}
 	}
 
 }
